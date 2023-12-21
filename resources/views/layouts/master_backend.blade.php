@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('backend/assets/img/favicon/favicon.ico') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,39 +23,39 @@
         rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ assets('backend/assets/vendor/fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ assets('backend/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ assets('backend/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ assets('backend/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ assets('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
-    <link rel="stylesheet" href="{{ assets('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ assets('backend/assets/vendor/js/helpers.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ assets('backend/assets/js/config.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
 </head>
 
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <!-- Menu -->
+            <!-- Menu --> 
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
                         <span class="app-brand-logo demo">
-                        <img src="assets/img/logoicon.png" alt="">
+                        <img src="{{ asset('backend/assets/img/logoicon.png') }}" alt="">
                         </span>
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">
                             IT Shop
@@ -73,28 +73,28 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
+                        <a href="{{ url('/dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>  
                     
                     <li class="menu-item">
-                        <a href="user.html" class="menu-link">
+                        <a href="{{ url('admin/user/index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">User</div>
                         </a>
                     </li>  
 
                     <li class="menu-item">
-                        <a href="category.html" class="menu-link">
+                        <a href="{{ url('admin/category/index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                             <div data-i18n="Analytics">Category</div>
                         </a>
                     </li>  
 
                     <li class="menu-item">
-                        <a href="product.html" class="menu-link">
+                        <a href="{{ url('admin/product/index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-cart-alt"></i>
                             <div data-i18n="Analytics">Product</div>
                         </a>
@@ -129,7 +129,7 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="#"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="assets/img/avatars/user.jpg" alt
+                                        <img src="{{ asset('backend/assets/img/avatars/user.jpg') }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
@@ -139,13 +139,13 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="assets/img/avatars/user.jpg" alt
+                                                        <img src="{{ asset('backend/assets/img/avatars/user.jpg') }}" alt
                                                             class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                                    <small class="text-muted">{{ Auth::user()->email }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -154,16 +154,21 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="profile.html">
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                             <i class="bx bx-user me-2"></i>
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-basic.html">
+                                    <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                                        <a class="dropdown-item" href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
+                                    </from>
                                     </li>
                                 </ul>
                             </li>
@@ -176,77 +181,9 @@
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
-                    <!-- Content -->
 
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        
-                            <div class="col-lg-12 col-md-4 order-1">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-12 col-3 mb-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div
-                                                    class="card-title d-flex align-items-start justify-content-between">
-                                                    <div class="avatar flex-shrink-0">
-                                                        <img src="assets/img/icons/unicons/chart-success.png"
-                                                            alt="chart success" class="rounded" />
-                                                    </div>
-                      
-                                                </div>
-                                                <span class="fw-semibold d-block mb-1">User</span>
-                                                <h3 class="card-title mb-2"> 2 คน</h3>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-12 col-3 mb-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div
-                                                    class="card-title d-flex align-items-start justify-content-between">
-                                                    <div class="avatar flex-shrink-0">
-                                                        <img src="assets/img/icons/unicons/chart-success.png"
-                                                            alt="chart success" class="rounded" />
-                                                    </div>
-                      
-                                                </div>
-                                                <span class="fw-semibold d-block mb-1">Category</span>
-                                                <h3 class="card-title mb-2"> 5 ประเภท</h3>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-12 col-3 mb-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div
-                                                    class="card-title d-flex align-items-start justify-content-between">
-                                                    <div class="avatar flex-shrink-0">
-                                                        <img src="assets/img/icons/unicons/chart-success.png"
-                                                            alt="chart success" class="rounded" />
-                                                    </div>
-                      
-                                                </div>
-                                                <span class="fw-semibold d-block mb-1">Product</span>
-                                                <h3 class="card-title mb-2"> 10 ชิ้น</h3>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                 
-                                </div>
-                                
-                            </div>
-                         
-                            
-                       
-                        </div>
-                     
-                    </div>
-                    <!-- / Content -->
-
+                @yield('contant')
+                  
                     <!-- Footer -->
                     <footer class="content-footer footer bg-footer-theme">
                         <div
@@ -279,22 +216,22 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{ assets('backend/assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ assets('backend/assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ assets('backend/assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ assets('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="{{ assets('backend/assets/vendor/js/menu.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ assets('backend/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
     <!-- Main JS -->
-    <script src="{{ assets('backend/assets/js/main.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    <script src="{{ assets('backend/assets/js/dashboards-analytics.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/dashboards-analytics.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
