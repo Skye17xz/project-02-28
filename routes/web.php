@@ -33,6 +33,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+ // เมนู User
 Route::get('admin/user/index',[UserController::class, 'index']);
+
+// เมนู Category
 Route::get('admin/category/index',[CategoryController::class, 'index']);
+Route::get('admin/category/createfrom',[CategoryController::class, 'createfrom']);
+Route::get('admin/category/edit',[CategoryController::class, 'edit']);
+
+
+
+// เมนู Product
 Route::get('admin/product/index',[ProductController::class, 'index']);
+Route::get('admin/product/createfrom',[ProductController::class, 'createfrom']);
+Route::get('admin/product/edit',[ProductController::class, 'edit']);
+

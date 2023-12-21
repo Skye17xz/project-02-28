@@ -7,7 +7,18 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('backend.product.index');
-}
+    }
+
+    public function createfrom()
+    {
+        return view('backend.product.createfrom');
+    }
+
+    public function edit()
+    {
+        return view('backend.product.edit');
+    }
 }
