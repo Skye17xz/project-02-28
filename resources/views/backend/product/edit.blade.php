@@ -5,7 +5,7 @@
                         <div class="row">
                             <div class="col-md-12">
                               <div class="card mb-9">
-                                <h5 class="card-header">Edit Category</h5>
+                                <h5 class="card-header">Edit Product</h5>
                                 <div class="card-body">
                                   <div>
                                     <label for="defaultFormControlInput" class="form-label">Name</label>
