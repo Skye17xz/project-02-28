@@ -1,6 +1,5 @@
 @extends('layouts.master_backend')
 @section('contant')
-
 <div class="content-wrapper">
                     <!-- Content -->
 
@@ -32,7 +31,7 @@
                                   <td>2022-07-25 12:46:29</td>
                                   <td>2022-07-25 12:46:29</td>
                                   <td>
-                                    <a href="#"><i class='bx bxs-edit'></i></a>
+                                    <a href="{{ url('admin/product/edit') }}"><i class='bx bxs-edit'></i></a>
                                     <a href="#"><i class='bx bx-trash'></i></a>
                                   </td>
                                   </tr>
@@ -43,5 +42,4 @@
                         </div>
                      
                     </div>
-
 @endsection
