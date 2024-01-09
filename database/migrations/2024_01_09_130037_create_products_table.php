@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name',255)->comment("ชื่อสินค้า");
             $table->string('price',255)->comment("ราคาสินค้า");
             $table->text('description')->comment("รายระเอียดประเภทสินค้า");
-            $table->integer('category_id')->comment("รหัสประเภทสินค้า");
+            $table->integer('category_id')->comment("รหัสปรเภทสินค้า");
             $table->string('image',255)->comment("รูปภาพ");
             $table->timestamps();
         });
