@@ -40,7 +40,7 @@ Route::get('admin/user/index',[UserController::class, 'index']);
 Route::get('admin/category/index',[CategoryController::class, 'index']);
 Route::get('admin/category/createfrom',[CategoryController::class, 'createfrom']);
 Route::get('admin/category/edit',[CategoryController::class, 'edit']);
-
+Route::post('admin/category/insert',[CategoryController::class, 'insert']);
 
 
 // เมนู Product
