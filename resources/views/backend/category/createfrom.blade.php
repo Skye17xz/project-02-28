@@ -11,7 +11,18 @@
             @csrf
             <div>
               <label for="defaultFormControlInput" class="form-label">Name</label>
-              <input type="text" name="name" class="form-control" id="defaultFormControlInput" placeholder="กรุณากรอกประเภทสินค้า" aria-describedby="defaultFormControlHelp"/>
+              <input
+               type="text"
+               name="name" 
+               class="form-control" 
+               id="defaultFormControlInput" 
+               placeholder="กรุณากรอกประเภทสินค้า" 
+               aria-describedby="defaultFormControlHelp" />
+               <div class="mt-3">
+               @error('name')
+               <div class="alert alert-danger">{{ $message }}</div>
+               @enderror
+               </div>              
               <input type="submit" value="บันทึก" class="btn btn-primary mt-3">
               <a href="{{ url ('admin/category/index') }}" class="btn btn-danger mt-3 mx-2">ย้อนกลับ</a>
             </div>
