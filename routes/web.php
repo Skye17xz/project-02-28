@@ -39,7 +39,7 @@ Route::get('admin/user/index',[UserController::class, 'index']);
 // เมนู Category
 Route::get('admin/category/index',[CategoryController::class, 'index']);
 Route::get('admin/category/createfrom',[CategoryController::class, 'createfrom']);
-Route::get('admin/category/edit',[CategoryController::class, 'edit']);
+Route::get('admin/category/edit/{id}',[CategoryController::class, 'edit']);
 Route::post('admin/category/insert',[CategoryController::class, 'insert']);
 
 

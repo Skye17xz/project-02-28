@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index()
-    {
-        return view('backend.category.index');
+    {   $category = Category::all();
+        return view('backend.category.index',compact('category'));
     }
 
     public function createfrom()
@@ -18,9 +18,10 @@ class CategoryController extends Controller
         return view('backend.category.createfrom');
     }
 
-    public function edit()
+    public function edit($category_id)
     {
-        return view('backend.category.edit');
+        $cat = Category::find($category_id);
+        return view('backend.category.edit',compact('cat'));
     }
 
     public function insert(Request $request)
