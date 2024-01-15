@@ -42,4 +42,13 @@ class CategoryController extends Controller
         alert()->success('บันทึกข้อมูลเสร็จแล้ว','ข้อมูลนี้ถูกบันทึกแล้ว');
         return redirect('admin/category/index');
     }
+
+    public function update(Request $request, $category_id){
+        $category = Category::find($category_id);
+        $category->name = $request->name;
+        $category->update();
+        alert()->success('แก้ไขข้อมูลสำเร็จ','ข้อมูลนี้ถูกบันทึกแล้ว');
+        return redirect('admin/category/index');
+    }
+
 }

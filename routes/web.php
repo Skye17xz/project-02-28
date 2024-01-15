@@ -41,6 +41,7 @@ Route::get('admin/category/index',[CategoryController::class, 'index']);
 Route::get('admin/category/createfrom',[CategoryController::class, 'createfrom']);
 Route::get('admin/category/edit/{id}',[CategoryController::class, 'edit']);
 Route::post('admin/category/insert',[CategoryController::class, 'insert']);
+Route::post('admin/category/update/{id}',[CategoryController::class, 'update']);
 
 
 // เมนู Product
