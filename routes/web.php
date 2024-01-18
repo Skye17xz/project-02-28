@@ -49,4 +49,4 @@ Route::get('admin/category/delete/{id}',[CategoryController::class, 'delete']);
 Route::get('admin/product/index',[ProductController::class, 'index']);
 Route::get('admin/product/createfrom',[ProductController::class, 'createfrom']);
 Route::get('admin/product/edit',[ProductController::class, 'edit']);
-
+Route::post('admin/product/insert',[ProductController::class, 'insert']);
