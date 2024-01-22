@@ -12,7 +12,8 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index(){
-        return view('backend.product.index');
+        $product = Product::orderBy('created_at','desc')->Paginate(10);
+        return view('backend.product.index',compact('product'));
 }
 
     public function createfrom(){
