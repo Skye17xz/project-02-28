@@ -7,7 +7,7 @@
                               <div class="card mb-9">
                                 <h5 class="card-header">Product</h5>
                                 <div class="card-body">
-                                  <form action="{{ url('admin/product/insert') }}" method="post">
+                                  <form action="{{ url('admin/product/insert') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div>
                                     <label for="defaultFormControlInput" class="form-label">Name</label>
@@ -42,7 +42,7 @@
                                     />
 
                                     <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                                    <select name="category" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                                    <select name="category_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                                       <option selected>กรุณาเลือกประเภทสินค้า</option>
                                       <option value="1">โทรศัพท์มือถือ</option>
                                       <option value="2">โน๊ตบุ๊ค</option>
