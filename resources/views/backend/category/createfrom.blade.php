@@ -13,7 +13,7 @@
               <label for="defaultFormControlInput" class="form-label">Name</label>
               <input
                type="text"
-               name="name" 
+               name="name"
                class="form-control" 
                id="defaultFormControlInput" 
                placeholder="กรุณากรอกประเภทสินค้า" 

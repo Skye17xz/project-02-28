@@ -35,7 +35,7 @@
                                   <td>{{$pro->updated_at}}</td>
                                   <td>
                                     <a href="{{ url('admin/product/edit/'.$pro->product_id) }}"><i class='bx bxs-edit'></i></a>
-                                    <a href="#"><i class='bx bx-trash'></i></a>
+                                    <a href="{{ url('admin/product/delete/'.$pro->product_id) }}"><i class='bx bx-trash'></i></a>
                                   </td>
                                   </tr>
                                   @endforeach

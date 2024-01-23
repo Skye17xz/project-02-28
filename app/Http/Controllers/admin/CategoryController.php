@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function insert(Request $request)
         {
-    //ป้องกัยการกรอกข้อมูลผ่านฟอร์ม
+    //ป้องกันการกรอกข้อมูลผ่านฟอร์ม
         $validated = $request->validate([
         'name' => 'required|unique:categories|max:255',
         ],
