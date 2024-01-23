@@ -20,8 +20,9 @@ class ProductController extends Controller
     return view('backend.product.createfrom');
 }
 
-    public function edit(){
-    return view('backend.product.edit');
+    public function edit($product_id){
+        $pro = Product::find($product_id);
+    return view('backend.product.edit',compact('pro'));
 }
 
     public function insert(Request $request){
@@ -40,5 +41,34 @@ class ProductController extends Controller
         }
         $product->save( );
         return redirect('admin/product/index');
-}
-}
+    }
+
+        public function update(Request $request, $product_id){
+
+            $product = Product::find($product_id);
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->category_id = $request->category_id;
+
+            if($request->hasFile('image'))
+
+            if ($product->file != 'no_image.jpg')
+            {
+                File::delete(public_path().' /backend/product/'.$product->file);
+                File::delete(public_path().'/backend/product/resize/'.$product->file);
+            
+            $filename = Str::random(10).'.'.
+            $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path().'/backend/product/'.$filename);
+            Image::make(public_path().'backend/product/'.$filename)->resize(250,250)->save(public_path().'/backend/product/resize/'.$filename);
+            $product->image = $filename;
+
+            }else{
+                $product->image = 'no_image.jpg';
+            }
+            $product->update();
+            alert()->success('แก้ไขข้อมูลสำเร็จ','ข้อมูลถูกแก้ไขเรียบร้อยแล้ว');
+            return redirect('admin/product/index');
+        }
+    }
