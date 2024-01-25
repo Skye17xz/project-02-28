@@ -58,13 +58,14 @@
                                     <label for="exampleFormControlSelect1" class="form-label">Category</label>
                                     <select name="category_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                                       <option selected>กรุณาเลือกประเภทสินค้า</option>
-                                      <option value="1">โทรศัพท์มือถือ</option>
-                                      <option value="2">โน๊ตบุ๊ค</option>
-                                      <option value="3">คอมพิวเตอร์ตั้งโต๊ะ</option>
+                                      
+                                      @foreach ($category as $cat)
+                                      
+                                      <option value="{{ $cat->category_id }}">{{ $cat->name }}</option>
+
+                                      @endforeach
                                     </select>
                                     
-
-
                                     <label for="defaultFormControlInput" class="form-label">Images</label>
                                       <div class="input-group">
                                         <input name="image" type="file" class="form-control" id="inputGroupFile02" />
