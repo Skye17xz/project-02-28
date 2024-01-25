@@ -28,6 +28,8 @@ class ProductController extends Controller
 
 
     public function insert(Request $request){
+
+        //ป้องกันการกรอกข้อมูลผ่านฟอร์ม
         $validated = $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|max:255',
@@ -62,6 +64,23 @@ class ProductController extends Controller
 
         public function update(Request $request, $product_id){
 
+            //ป้องกันการกรอกข้อมูลผ่านฟอร์ม
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'price' => 'required|max:255',
+                'description' => 'required|max:255',
+                'image' => 'mimes:jpg,jpeg,png'
+                ],
+            [
+                'name.required' => 'กรุณากรอกข้อมูลสินค้า',
+                'name.max' => 'กรอกข้อมูลได้ 255 ตัวอักษร',
+                'price.required' => 'กรุณากรอกข้อมูลราคาสินค้า',
+                'price.max' => 'กรอกข้อมูลได้ 255 ตัวอักษร',
+                'description.required' => 'กรุณากรอกข้อมูลประเภทสินค้าสินค้า' ,
+                'image.mimes' => 'อัพโหลดภาพที่มีนามสกุล .jpg .jpeg .png ได้เท่านั้น' ,
+            ]);
+    
+
             $product = Product::find($product_id);
             $product->name = $request->name;
             $product->price = $request->price;
@@ -91,6 +110,7 @@ class ProductController extends Controller
 
         public function delete ($product_id)
         {
+            
             $product = Product::find($product_id);
 
                if ($product->file != 'no_image.jpg') {

@@ -19,7 +19,11 @@
                                       placeholder="กรุณากรอกชื่อสินค้า"
                                       aria-describedby="defaultFormControlHelp"
                                     />
-
+                                    <div class="mt-3">
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>   
                                     
                                     <label for="defaultFormControlInput" class="form-label">Price</label>
                                     <input
@@ -30,6 +34,11 @@
                                       placeholder="กรุณากรอกราคาสินค้า"
                                       aria-describedby="defaultFormControlHelp"
                                     />
+                                    <div class="mt-3">
+                                    @error('price')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>   
 
                                     <label for="defaultFormControlInput" class="form-label">Description</label>
                                     <input
@@ -40,6 +49,11 @@
                                       placeholder="กรุณากรอกรายละเอียดสินค้า"
                                       aria-describedby="defaultFormControlHelp"
                                     />
+                                    <div class="mt-3">
+                                    @error('description')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>   
 
                                     <label for="exampleFormControlSelect1" class="form-label">Category</label>
                                     <select name="category_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
@@ -48,6 +62,7 @@
                                       <option value="2">โน๊ตบุ๊ค</option>
                                       <option value="3">คอมพิวเตอร์ตั้งโต๊ะ</option>
                                     </select>
+                                    
 
 
                                     <label for="defaultFormControlInput" class="form-label">Images</label>
