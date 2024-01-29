@@ -11,27 +11,29 @@
                               <table class="table mt-4">
                                 <thead class="table-dark">
                                   <tr>
-                                    <th>No</th>
+                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Category<th>
-                                    <th>images</th>
+                                    <th>Category</th>
+                                    <th>Image</th>
                                     <th>Price</th>
                                     <th>Description</th>
                                     <th>Created_at</th>
                                     <th>Updated_at</th>
-                                    <th>Actions</th>
-                                  @foreach ($product as $pro)
+                                    <th>Action</th>
                                   </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
+                                @foreach ($product as $pro)
                                   <tr>
+                                   
                                   <td>{{ $product->firstItem() + $loop->index }}</td>
                                   <td>{{ $pro->name}}</td>
                                   <td>{{ $pro->category->name}}</td>
                                   <td>
-                                    <img src="{{ asset('backend/product/resize/'.$pro->image) }}" width="30%" alt="">
+                                    <img src="{{ asset('backend/product/resize/'.$pro->image) }}" width="50" alt="">
                                   </td>
-                                  <td> {{$pro->price}}</td>
+                                  
+                                  <td>{{$pro->price}}</td>
                                   <td>{{$pro->description}}</td>
                                   <td>{{$pro->created_at}}</td>
                                   <td>{{$pro->updated_at}}</td>
